@@ -3,10 +3,13 @@ package com.ntt.cinema.services;
 import com.ntt.cinema.models.Artist;
 import com.ntt.cinema.repositories.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class ArtistService {
     private final ArtistRepository artistRepository;
 
