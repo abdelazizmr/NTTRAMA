@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Objects;
+
 @Entity
 public class Artist {
     @Id
@@ -15,10 +16,14 @@ public class Artist {
     private String firstName;
     private String lastName;
     private String photo;
-    private String artist_type;
+
+    @Enumerated(EnumType.STRING)
+    private ArtistType artistType;
+
     @ManyToOne
     @JoinColumn(name = "nationality_id", referencedColumnName = "id")
     private Nationality nationality;
+
     public Artist() {
     }
 
@@ -70,12 +75,12 @@ public class Artist {
         this.photo = photo;
     }
 
-    public String getArtist_type() {
-        return artist_type;
+    public ArtistType getArtistType() {
+        return artistType;
     }
 
-    public void setArtist_type(String artist_type) {
-        this.artist_type = artist_type;
+    public void setArtistType(ArtistType artistType) {
+        this.artistType = artistType;
     }
 
     public Nationality getNationality() {
@@ -95,7 +100,7 @@ public class Artist {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", photo='" + photo + '\'' +
-                ", artist_type='" + artist_type + '\'' +
+                ", artistType=" + artistType +
                 ", nationality=" + nationality +
                 '}';
     }

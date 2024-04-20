@@ -1,17 +1,30 @@
 package com.ntt.cinema.models;
 
+import jakarta.persistence.*;
+
 import java.sql.Timestamp;
 import java.util.Objects;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Timestamp added_date;
+    @Column(unique = true)
     private String email;
     private String password;
+    @Column(name = "first_name")
     private String firstname;
+    @Column(name = "last_name")
     private String lastname;
 
     public Customer() {
+    }
+
+    public Customer(int id) {
+        this.id = id;
     }
 
     public int getId() {
