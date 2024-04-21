@@ -67,4 +67,26 @@
     border-color: #424242;
 }
 
+.index-menu {
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.index-menu img{
+    width: 420px;
+    height: 280px;
+    border-radius: 5px;
+}
+
+.index-menu img:hover{
+    transform: scale(1.03);
+    transition: transform .5s ease;
+}
+
 
