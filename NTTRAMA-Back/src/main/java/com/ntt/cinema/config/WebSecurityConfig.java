@@ -20,14 +20,14 @@ public class WebSecurityConfig {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .requestMatchers("/css/**", "/js/**").permitAll()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .loginPage("/login") // Specify custom login page URL
+                .permitAll() // Allow access to the login page without authentication
                 .failureUrl("/login?error")
-                .loginPage("/login")
-                .defaultSuccessUrl("/index")
-                .permitAll()
+                .defaultSuccessUrl("/")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
