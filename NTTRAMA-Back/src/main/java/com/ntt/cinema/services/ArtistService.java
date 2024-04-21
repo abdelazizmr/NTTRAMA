@@ -1,3 +1,4 @@
+// ArtistService.java
 package com.ntt.cinema.services;
 
 import com.ntt.cinema.models.Artist;
@@ -8,11 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class ArtistService {
+
     private final ArtistRepository artistRepository;
 
+    @Autowired
     public ArtistService(ArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
     }
@@ -33,3 +35,4 @@ public class ArtistService {
         artistRepository.deleteById(id);
     }
 }
+
