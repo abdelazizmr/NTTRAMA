@@ -1,0 +1,36 @@
+.text-title{
+
+color: #ff8c00
+}
+.btn-primary{
+    background-color : #333;
+    color: #fff;
+    border-color: #333;
+
+}
+.btn-primary:hover{
+    background-color: #333;
+    color: #ff8c00;
+    border-color: #333;
+}
+/* Custom CSS for checkbox hover effect */
+.form-check-input:hover {
+    background-color: black; /* Black background on hover */
+    border-color: orange; /* Orange border on hover */
+  }
+  
+  /* Custom CSS for register buttons hover effect */
+.btn-link:hover {
+    color: orange; /* Orange text color on hover */
+  }
+  
+  .btn-link:hover .fab {
+    color: orange; /* Orange icon color on hover */
+  }
+  
+  .btn-link:hover::before {
+    background-color: black;
+    color: #333;
+     /* Black background on hover */
+  }
+  

@@ -1,0 +1,48 @@
+/* movies.component.css */
+
+.container {
+    padding-top: 20px;
+  }
+  
+  .card {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-img-top {
+    height: 300px; /* Adjust as needed */
+    object-fit: cover;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .row {
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Ensure all cards have the same height */
+  .col-md-4 {
+    height: 100%;
+  }
+  .body{
+    background: grey;
+    height: 100%;
+    
+  }

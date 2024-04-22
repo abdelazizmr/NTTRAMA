@@ -7,7 +7,6 @@ import { SignupComponent } from './Components/signup/signup.component';
 import { ClientsComponent } from './Components/clients/clients.component';
 import { ClientComponent } from './Components/client/client.component';
 import { AuthGuard } from './Services/auth.guard.service';
-
 const routes: Routes = [
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
   { path: 'movies', component: MoviesComponent },
