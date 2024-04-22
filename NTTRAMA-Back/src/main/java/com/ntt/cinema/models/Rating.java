@@ -9,7 +9,6 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private int customer_id;
     private String comment;
     private int score;

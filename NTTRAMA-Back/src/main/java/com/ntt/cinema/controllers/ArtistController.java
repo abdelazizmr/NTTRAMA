@@ -26,7 +26,6 @@ import java.util.Optional;
 public class ArtistController {
 
     private final ArtistService artistService;
-//    private final ArtistTypeService artistTypeService;
     private final NationalityService nationalityService;
 
     @Autowired
@@ -43,23 +42,6 @@ public class ArtistController {
         model.addAttribute("nationalities", nationalities);
         return "artists";
     }
-
-//    @PostMapping("/artists")
-//    public String createOrUpdateArtist(@ModelAttribute("artist") Artist artist) {
-//        Optional<Artist> existingArtist = artistService.getArtistById(artist.getId());
-//        if (existingArtist.isPresent()) {
-//            Artist existing = existingArtist.get();
-//            existing.setFirstName(artist.getFirstName());
-//            existing.setLastName(artist.getLastName());
-//            existing.setPhoto(artist.getPhoto());
-//            existing.setArtistType(artist.getArtistType());
-//            artistService.createOrUpdateArtist(existing);
-//        } else {
-//            artist.setAdded_date(new Timestamp(System.currentTimeMillis()));
-//            artistService.createOrUpdateArtist(artist);
-//        }
-//        return "redirect:/artists";
-//    }
 
     @PostMapping("/artists")
     public String createOrUpdateArtist(@ModelAttribute("artist") Artist artist, @RequestParam("image") MultipartFile file) {
@@ -86,39 +68,6 @@ public class ArtistController {
         }
         return "redirect:/artists";
     }
-
-//    @PostMapping("/artists")
-//    public String createOrUpdateArtist(@ModelAttribute("artist") Artist artist,
-//                                       @RequestParam("photo") MultipartFile file) {
-//        try {
-//            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//            Path uploadPath = Paths.get("static/artist-img/");
-//            if (!Files.exists(uploadPath)) {
-//                Files.createDirectories(uploadPath);
-//            }
-//            try (InputStream inputStream = file.getInputStream()) {
-//                Files.copy(inputStream, uploadPath.resolve(fileName), StandardCopyOption.REPLACE_EXISTING);
-//            }
-//            artist.setPhoto("/artist-img/" + fileName);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Optional<Artist> existingArtist = artistService.getArtistById(artist.getId());
-//        if (existingArtist.isPresent()) {
-//            Artist existing = existingArtist.get();
-//            existing.setFirstName(artist.getFirstName());
-//            existing.setLastName(artist.getLastName());
-//            // Set other artist fields
-//            artistService.createOrUpdateArtist(existing);
-//        } else {
-//            artist.setAdded_date(new Timestamp(System.currentTimeMillis()));
-//            // Set other artist fields
-//            artistService.createOrUpdateArtist(artist);
-//        }
-//        return "redirect:/artists";
-//    }
-
 
     @PostMapping("/artists/{id}")
     public String deleteArtist(@PathVariable int id) {
