@@ -6,8 +6,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-//@CrossOrigin("http://localhost:4200")
+@CrossOrigin("http://localhost:4200")
 @Repository
-//@RepositoryRestResource(exported = false)
+@RepositoryRestResource
 public interface FilmRepository extends JpaRepository<Film, Integer> {
 }
