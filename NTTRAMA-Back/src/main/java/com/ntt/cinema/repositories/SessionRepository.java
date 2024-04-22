@@ -1,7 +1,7 @@
-package com.ntt.cinema.repositories;
-
-import org.hibernate.Session;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface SessionRepository extends JpaRepository<Session, Integer> {
-}
+//package com.ntt.cinema.repositories;
+//
+//import org.hibernate.Session;
+//import org.springframework.data.jpa.repository.JpaRepository;
+//
+//public interface SessionRepository extends JpaRepository<Session, Integer> {
+//}

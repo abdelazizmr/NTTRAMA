@@ -72,7 +72,6 @@
             <td class="artist-birthdate" th:text="${artist.birthdate}"></td>
             <td class="artist-type" th:text="${artist.artistType}"></td>
             <td th:text="${artist.nationality.getCountry_name()}"></td>
-<!--            <td class="artist-photo" th:text="${artist.photo}"></td>-->
             <td class="artist-photo">
                 <img th:if="${artist.photo != null}" th:src="@{'/artist-img/' + ${artist.photo}}" alt="Artist Photo" style="max-width: 100px;">
             </td>

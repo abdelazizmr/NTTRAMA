@@ -12,7 +12,7 @@ public class Film {
     private int year;
     private int duration;
     private String title;
-
+    private String photo;
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
@@ -112,5 +112,13 @@ public class Film {
 
     public void setRatings(List<Rating> ratings) {
         this.ratings = ratings;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
