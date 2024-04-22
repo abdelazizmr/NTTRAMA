@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Table</title>
+    <!-- Bootstrap CSS -->
+    <link id="theme-link" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Dark theme custom styles -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" href="data:,">
+</head>
+<body class="dark-mode">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark dark-mode">
+    <a class="navbar-brand" href="index">NTTRAMA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="customers">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="artists">Artists</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="films">Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="sessions">Sessions</a>
+            </li>
+        </ul>
+        <!-- Dark Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="btn btn-primary">Switch Mode</button>
+        <!-- Search form -->
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 dark-mode" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container-fluid my-4 table-responsive">
+    <h1>Film Table</h1>
+    <button type="submit" class="btn btn-primary divButton">Add Film</button>
+    <table id="customer-table" class="table table-dark table-striped">
+        <!-- Table headers -->
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Added Date</th>
+            <th>Year</th>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Duration</th>
+            <th>Nationality</th>
+            <th>Director</th>
+            <th>Photo</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Table rows -->
+        <tr th:each="film : ${films}">
+            <td class="film-id" th:text="${film.id}"></td>
+            <td th:text="${film.added_date}"></td>
+            <td class="film-year" th:text="${film.year}"></td>
+            <td class="film-"title th:text="${film.title}"></td>
+            <td class="film-genre" th:text="${film.genre}"></td>
+            <td class="film-duration" th:text="${film.duration}"></td>
+            <td th:text="${film.nationality.getCountry_name()}"></td>
+            <td class="film-director" th:text="${film.director.firstName}"></td>
+            <td class="film-photo" th:text="${film.photo}"></td>
+
+<!--            <td class="artist-photo">-->
+<!--                <img th:if="${artist.photo != null}" th:src="@{'/artist-img/' + ${artist.photo}}" alt="Artist Photo" style="max-width: 100px;">-->
+<!--            </td>-->
+
+            <td>
+                <button class="btn btn-primary editButton">Edit</button>
+            </td>
+            <td>
+                <form th:action="@{'/films/' + ${film.id}}" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class = "addDiv hide">
+    <form th:action="@{'/films'}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="id" name="id">
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" class="form-control" id="year" name="year" required>
+        </div>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre:</label>
+            <select class="form-control" id="genre" name="genre" required>
+                <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.genre_name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="genre">Duration:</label>
+            <input type="date" class="form-control" id="duration" name="duration" required>
+        </div>
+        <div class="form-group" id="nationalityLabel">
+            <label for="nationality">Nationality:</label>
+            <select class="form-control" id="nationality" name="nationality" required>
+                <option th:each="nationality : ${nationalities}" th:value="${nationality.id}" th:text="${nationality.country_name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="director">Director:</label>
+            <select class="form-control" id="director" name="director" required>
+                <option th:each="artist : ${artists}" th:value="${artist.id}" th:text="${artist.}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="photo">Photo:</label>
+            <input type="file" class="form-control" id="photo" name="image" required>
+        </div>
+        <button type="submit" class="btn btn-primary confirmButton">Confirm</button>
+        <button type="button" class="btn btn-danger cancelButton">Cancel</button>
+    </form>
+</div>
+
+<div class="overlay hide"></div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/js/artist-script.js"></script>
+
+</body>
+</html>
