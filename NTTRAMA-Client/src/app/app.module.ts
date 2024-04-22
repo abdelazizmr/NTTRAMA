@@ -8,6 +8,9 @@ import { MovieComponent } from './Components/movie/movie.component';
 import { LoginComponent } from './Components/login/login.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { SignupComponent } from './Components/signup/signup.component';
+import { ClientsComponent } from './Components/clients/clients.component';
+import { ClientComponent } from './Components/client/client.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,15 @@ import { FooterComponent } from './Components/footer/footer.component';
     MovieComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SignupComponent,
+    ClientsComponent,
+    ClientComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [
     provideClientHydration()
