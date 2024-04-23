@@ -25,8 +25,13 @@ public class Film {
     @JoinColumn(name = "director_id")
     private Artist director;
 
-    @OneToMany(mappedBy = "film")
-    private List<Actor> actors;
+    @ManyToMany
+    @JoinTable(
+            name = "film_actor",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id")
+    )
+    private List<Artist> actors;
 
     @OneToMany(mappedBy = "film")
     private List<Rating> ratings;
@@ -98,11 +103,11 @@ public class Film {
         this.director = director;
     }
 
-    public List<Actor> getActors() {
+    public List<Artist> getActors() {
         return actors;
     }
 
-    public void setActors(List<Actor> actors) {
+    public void setActors(List<Artist> actors) {
         this.actors = actors;
     }
 
@@ -121,4 +126,6 @@ public class Film {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+
 }

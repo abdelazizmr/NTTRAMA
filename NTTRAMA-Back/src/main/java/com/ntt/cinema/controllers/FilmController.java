@@ -12,9 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class FilmController {
@@ -47,9 +53,18 @@ public class FilmController {
     }
 
     @PostMapping("/films")
-    public String createOrUpdateFilm(@ModelAttribute("film") Film film) {
-        film.setAdded_date(new Timestamp(System.currentTimeMillis()));
-        filmService.createOrUpdateFilm(film);
+    public String createOrUpdateFilm(@ModelAttribute("film") Film film, @RequestParam("image") MultipartFile file) {
+        try {
+            film.setPhoto(file.getOriginalFilename());
+            byte[] bytes = file.getBytes();
+            Path uploadPath = Paths.get("src/main/resources/static/film-img/" + file.getOriginalFilename());
+            Files.createDirectories(uploadPath.getParent());
+            Files.write(uploadPath, bytes);
+            film.setAdded_date(new Timestamp(System.currentTimeMillis()));
+            filmService.createOrUpdateFilm(film);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "redirect:/films";
     }
 
