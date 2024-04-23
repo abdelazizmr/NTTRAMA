@@ -13,11 +13,11 @@ public class Film {
     private int duration;
     private String title;
     private String photo;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "nationality_id")
     private Nationality nationality;
 

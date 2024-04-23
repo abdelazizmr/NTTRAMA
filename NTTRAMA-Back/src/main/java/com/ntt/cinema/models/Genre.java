@@ -12,7 +12,7 @@ public class Genre {
 
     private String genre_name;
 
-    @OneToMany(mappedBy = "genre")
+    @OneToMany(mappedBy = "genre",fetch = FetchType.EAGER)
     private List<Film> films;
 
     public Genre() {
