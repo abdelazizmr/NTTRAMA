@@ -16,6 +16,7 @@ public class Artist {
     private String firstName;
     private String lastName;
     private String photo;
+    private String fullname;
 
     @Enumerated(EnumType.STRING)
     private ArtistType artistType;
@@ -89,6 +90,14 @@ public class Artist {
 
     public void setNationality(Nationality nationality) {
         this.nationality = nationality;
+    }
+
+    public String getFullname() {
+        return this.firstName + " " + lastName;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     @Override
