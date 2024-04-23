@@ -1,5 +1,5 @@
 <div class="body">
-<div class="movie-details-container">
+  <div *ngIf="movie" class="movie-details-container">
     <div class="movie-title">{{ movie.title }}</div>
     <div class="movie-content">
       <div class="movie-image" [style.background-image]="'url(' + movie.imageUrl + ')'"></div>
@@ -7,9 +7,10 @@
         <p><strong>Genre:</strong> {{ movie.genre }}</p>
         <p><strong>Director:</strong> {{ movie.director }}</p>
         <p><strong>Year:</strong> {{ movie.year }}</p>
-        <p><strong>Description:</strong> {{movie.description}}</p>
+        <p><strong>Description:</strong> {{ movie.description }}</p>
         <button class="watch-trailer-btn">Watch Trailer</button>
       </div>
     </div>
   </div>
-</div> 
+  <div *ngIf="!movie" class="loading-message">Loading...</div>
+</div>

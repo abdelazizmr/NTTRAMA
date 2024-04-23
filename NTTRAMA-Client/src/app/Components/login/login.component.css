@@ -1,0 +1,46 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .login-container {
+    background-image: url('https://www.cinemonde.fr/medias-pages/cine-cluses/salle_1-20200626-131738.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-form {
+    background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .btn-dark {
+    background-color: #343a40; /* Dark button background */
+    color: #fff; /* White text color */
+    border: none; /* No border */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+
+  .btn-dark:hover {
+    background-color: #23272b; /* Darker button background on hover */
+  }
+
+  .link-danger {
+    color: #dc3545; /* Red link color */
+  }
+
+  .link-danger:hover {
+    text-decoration: underline; /* Underline on hover */
+  }

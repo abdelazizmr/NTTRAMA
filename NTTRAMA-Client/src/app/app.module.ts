@@ -11,6 +11,8 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { ClientsComponent } from './Components/clients/clients.component';
 import { ClientComponent } from './Components/client/client.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { ClientComponent } from './Components/client/client.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
+  
     
   ],
   providers: [

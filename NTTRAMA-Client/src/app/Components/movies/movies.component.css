@@ -1,0 +1,114 @@
+.body {
+    padding-top: 20px;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  /* Card link styles */
+  .cardlink {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Listing item styles */
+  .listing-item-style {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .listing-item-style:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Overlay styles */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .listing-item-style[_ngcontent-ng-c1679688737] {
+    position: relative;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+  .listing-item-style:hover .overlay {
+    opacity: 1;
+  }
+  
+  .hover {
+    display: flex;
+    align-items: center;
+  }
+  
+  .listing-item-style img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .listing-item-style h6 {
+    margin: 0;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .listing-item-style .rate {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .listing-item-style .year {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .page-link {
+    cursor: pointer;
+  }
+  
+  .page-item.disabled .page-link {
+    pointer-events: none;
+  }
+  
+  .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .body{
+    background-color: grey;
+  }
+  .page-link:hover {
+    color: #fff;
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  .overlay{
+    color: #fff;
+   
+  }
