@@ -22,7 +22,7 @@ public class WebSecurityConfig {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/api/**","/api").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -41,7 +41,7 @@ public class WebSecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring().
-                requestMatchers("/api/**");
+                requestMatchers("/api/**","/api");
     }
 
     @Bean
