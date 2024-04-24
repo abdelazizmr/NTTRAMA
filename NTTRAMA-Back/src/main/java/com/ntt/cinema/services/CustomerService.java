@@ -32,5 +32,9 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 
+    public Customer getCustomerByEmail(String email){
+        return customerRepository.findByEmail(email);
+    }
+
 }
 
