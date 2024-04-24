@@ -30,7 +30,10 @@
                 <a class="nav-link" href="films">Movies</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="sessions">Sessions</a>
+                <a class="nav-link" href="movie-sessions">Sessions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="movie-rooms">Rooms</a>
             </li>
         </ul>
         <!-- Dark Mode Toggle Button -->
@@ -58,6 +61,7 @@
             <th>Duration</th>
             <th>Nationality</th>
             <th>Director</th>
+            <th>Rating</th>
             <th>Photo</th>
             <th>Delete</th>
         </tr>
@@ -73,6 +77,7 @@
             <td class="film-duration" th:text="${film.duration}"></td>
             <td th:text="${film.nationality.getCountry_name()}"></td>
             <td class="film-director" th:text="${film.director.fullname}"></td>
+            <td class="film-director" th:text="${film.averageRating}"></td>
             <td class="film-photo">
                 <img th:if="${film.photo != null}" th:src="@{'/film-img/' + ${film.photo}}" alt="Film Photo" style="max-width: 100px;">
             </td>            <td>

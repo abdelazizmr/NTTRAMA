@@ -16,7 +16,7 @@ public class MovieRoom {
     private int room_number;
 
     @OneToMany(mappedBy = "movieRoom")
-    private List<Session> sessions;
+    private List<MovieSession> movieSessions;
 
     public MovieRoom() {
     }
@@ -53,12 +53,12 @@ public class MovieRoom {
         this.room_number = room_number;
     }
 
-    public List<Session> getSessions() {
-        return sessions;
+    public List<MovieSession> getSessions() {
+        return movieSessions;
     }
 
-    public void setSessions(List<Session> sessions) {
-        this.sessions = sessions;
+    public void setSessions(List<MovieSession> movieSessions) {
+        this.movieSessions = movieSessions;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class MovieRoom {
                 ", added_date=" + added_date +
                 ", capacity=" + capacity +
                 ", room_number=" + room_number +
-                ", sessions=" + sessions +
+                ", sessions=" + movieSessions +
                 '}';
     }
 }
