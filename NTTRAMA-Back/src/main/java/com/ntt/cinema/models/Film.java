@@ -21,7 +21,7 @@ public class Film {
     @JoinColumn(name = "nationality_id")
     private Nationality nationality;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "director_id")
     private Artist director;
 
@@ -36,7 +36,21 @@ public class Film {
     @OneToMany(mappedBy = "film")
     private List<Rating> ratings;
 
+    private double averageRating;
+
     public Film() {
+    }
+
+    public void updateAverageRating() {
+        if (ratings == null || ratings.isEmpty()) {
+            this.averageRating = 0.0;
+            return;
+        }
+        int totalScore = 0;
+        for (Rating rating : ratings) {
+            totalScore += rating.getScore();
+        }
+        this.averageRating = ((double) totalScore / ratings.size());
     }
 
     public int getId() {
@@ -127,5 +141,12 @@ public class Film {
         this.photo = photo;
     }
 
+    public double getAverageRating() {
+        updateAverageRating();
+        return averageRating;
+    }
 
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
 }

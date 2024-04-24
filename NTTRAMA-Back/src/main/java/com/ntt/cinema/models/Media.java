@@ -3,6 +3,7 @@ package com.ntt.cinema.models;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 public class Media {
@@ -11,15 +12,14 @@ public class Media {
     private int id;
 
     private Timestamp added_date;
-    private String media;
-    private String media_type;
+    private String video;
 
     @ManyToOne
     @JoinColumn(name = "film_id")
     private Film film;
 
-    public Media() {
-    }
+    @OneToMany(mappedBy = "media", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Photo> photoList;
 
     public int getId() {
         return id;
@@ -37,20 +37,12 @@ public class Media {
         this.added_date = added_date;
     }
 
-    public String getMedia() {
-        return media;
+    public String getVideo() {
+        return video;
     }
 
-    public void setMedia(String media) {
-        this.media = media;
-    }
-
-    public String getMedia_type() {
-        return media_type;
-    }
-
-    public void setMedia_type(String media_type) {
-        this.media_type = media_type;
+    public void setVideo(String video) {
+        this.video = video;
     }
 
     public Film getFilm() {
@@ -61,14 +53,11 @@ public class Media {
         this.film = film;
     }
 
-    @Override
-    public String toString() {
-        return "Media{" +
-                "id=" + id +
-                ", added_date=" + added_date +
-                ", media='" + media + '\'' +
-                ", media_type='" + media_type + '\'' +
-                ", film=" + film +
-                '}';
+    public List<Photo> getPhotoList() {
+        return photoList;
+    }
+
+    public void setPhotoList(List<Photo> photoList) {
+        this.photoList = photoList;
     }
 }

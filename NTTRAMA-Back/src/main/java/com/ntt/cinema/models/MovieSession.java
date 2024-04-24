@@ -4,18 +4,16 @@ import jakarta.persistence.*;
 
 import java.sql.Time;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Objects;
+import java.time.LocalTime;
 
 @Entity
-public class Session {
+public class MovieSession {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private LocalDate projection_date;
-    private Time start_time;
-    private Time end_time;
+    private LocalTime start_time;
+    private LocalTime end_time;
 
     @ManyToOne
     @JoinColumn(name = "film_id")
@@ -25,7 +23,7 @@ public class Session {
     @JoinColumn(name = "movieRoom_id")
     private MovieRoom movieRoom;
 
-    public Session() {
+    public MovieSession() {
     }
 
     public int getId() {
@@ -44,19 +42,19 @@ public class Session {
         this.projection_date = projection_date;
     }
 
-    public Time getStart_time() {
+    public LocalTime getStart_time() {
         return start_time;
     }
 
-    public void setStart_time(Time start_time) {
+    public void setStart_time(LocalTime start_time) {
         this.start_time = start_time;
     }
 
-    public Time getEnd_time() {
+    public LocalTime getEnd_time() {
         return end_time;
     }
 
-    public void setEnd_time(Time end_time) {
+    public void setEnd_time(LocalTime end_time) {
         this.end_time = end_time;
     }
 

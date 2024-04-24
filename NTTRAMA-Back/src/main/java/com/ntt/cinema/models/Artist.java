@@ -1,6 +1,8 @@
 package com.ntt.cinema.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -23,6 +25,7 @@ public class Artist {
 
     @ManyToOne
     @JoinColumn(name = "nationality_id", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Nationality nationality;
 
     public Artist() {
