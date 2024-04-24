@@ -1,0 +1,19 @@
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let artist of artists">
+        <a [routerLink]="['/artist', artist.id]" style="text-decoration: none;">
+          <div class="card mb-3">
+            <img [src]="artist.photo" class="card-img-top" alt="Artist Image"> <!-- Add the image here -->
+            <div class="card-body">
+              <h5 class="card-title">{{ artist.firstName }}</h5>
+              <hr style="color: #fff;">
+              <p class="card-text"><strong>Nationality:</strong> {{ artist.nationality }}</p>
+              <p class="card-text"><strong>Birth Date:</strong> {{ artist.birthdate }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>

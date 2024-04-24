@@ -1,0 +1,41 @@
+.container {
+    padding-top: 20px;
+}
+
+.card {
+    color: #fff;
+    background-color: #333;
+    border: none;
+    transition: transform 0.3s ease;
+    height: 100%; /* Set height to 100% */
+}
+
+.card:hover {
+    color: #ff8c00;
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.row {
+    margin: 0; /* Remove default margin */
+}
+
+/* Ensure all cards have the same height */
+.col-md-4 {
+    height: 100%;
+}
+
+/* Set a fixed height for the images */
+.card-img-top {
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image covers the entire container */
+}

@@ -12,6 +12,12 @@ import { SignupComponent } from './Components/signup/signup.component';
 import { ClientsComponent } from './Components/clients/clients.component';
 import { ClientComponent } from './Components/client/client.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ArtistsComponent } from './Components/artists/artists.component';
+import { ArtistComponent } from './Components/artist/artist.component';
+import { CarouselModule } from 'primeng/carousel';
+import { GenresComponent } from './Components/genres/genres.component'; // Import CarouselModule
+
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 
 @NgModule({
@@ -25,12 +31,16 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     ClientsComponent,
     ClientComponent,
+    ArtistsComponent,
+    ArtistComponent,
+    GenresComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-  
+    HttpClientModule,
+    CarouselModule ,// Add CarouselModule here
+    FormsModule 
     
   ],
   providers: [

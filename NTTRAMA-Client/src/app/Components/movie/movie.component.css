@@ -1,48 +1,105 @@
+/* Body style */
 .body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f8f9fa; /* Use your desired background color */
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
   }
   
+  /* Movie details container */
   .movie-details-container {
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 600px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
   }
   
+  /* Movie title */
   .movie-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
   }
   
+  /* Movie content */
   .movie-content {
     display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   
+  /* Movie image */
   .movie-image {
     width: 200px;
     height: 300px;
     background-size: cover;
     border-radius: 10px;
     margin-right: 20px;
+    flex: 0 0 auto;
   }
   
+  .movie-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Movie info */
   .movie-info {
     flex: 1;
   }
   
-  .info {
+  /* Loading message */
+  .loading-message {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Movies list */
+  .movies-list {
+    margin-top: 20px;
+  }
+  
+  /* Movie card */
+  .movie-card {
+    text-decoration: none;
+    color: #000;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .movie-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Card title */
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 10px;
   }
   
+  /* Card text */
+  .card-text {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  /* Rate */
+  .rate {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* Watch trailer button */
   .watch-trailer-btn {
     padding: 10px 20px;
-    background-color: #007bff; /* Use your desired button color */
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -51,6 +108,6 @@
   }
   
   .watch-trailer-btn:hover {
-    background-color: #0056b3; /* Use your desired hover color */
+    background-color: #0056b3;
   }
   

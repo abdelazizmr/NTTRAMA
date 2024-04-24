@@ -1,0 +1,86 @@
+<div class="container emp-profile">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img [src]="artist?.photo" alt="Profile Picture"/>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>{{ artist?.fullname }}</h5>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <p class="nav-link active" data-toggle="tab"  role="tab" aria-selected="true">About</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Artist details content -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-work">
+                <p>MEMBER FROM :</p>
+                <span>{{ artist?.added_date | date: 'dd-MM-yyyy' }}</span>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>User Id</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ artist?.id }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Name :</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ artist?.fullname }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Statut :</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ artist?.artistType }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Birth Date :</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{ artist?.birthdate | date: 'dd-MM-yyyy' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- List of cards for all artists -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h3 style="text-align: center;">Other Artists : </h3>
+        </div>
+        <div class="col-md-4" *ngFor="let artistCard of artists">
+            <a [routerLink]="['/artist', artistCard.id]" style="text-decoration: none;">
+                <div class="card mb-3">
+                    <img [src]="artistCard.photo" class="card-img-top" alt="Artist Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ artistCard.fullname }}</h5>
+                        <p class="card-text">{{ artistCard.artistType }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

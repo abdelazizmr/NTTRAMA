@@ -1,16 +1,49 @@
 <div class="body">
+
+  <!-- Show movie details if available -->
   <div *ngIf="movie" class="movie-details-container">
     <div class="movie-title">{{ movie.title }}</div>
     <div class="movie-content">
-      <div class="movie-image" [style.background-image]="'url(' + movie.imageUrl + ')'"></div>
+      <div class="movie-image" [style.background-image]="'url(' + movie.photo + ')'">
+        <img [src]="'http://localhost:8080/film-img/' + movie.photo" alt="{{ movie.title }}">
+      </div>
       <div class="movie-info">
+        <!-- Format the added_date using the formatDate method -->
+        <p><strong>Added in : {{ formatDate(movie.added_date) }}</strong></p>
+        <p><strong>Title : {{ movie.title }}</strong></p>
         <p><strong>Genre:</strong> {{ movie.genre }}</p>
         <p><strong>Director:</strong> {{ movie.director }}</p>
         <p><strong>Year:</strong> {{ movie.year }}</p>
-        <p><strong>Description:</strong> {{ movie.description }}</p>
+        <p><strong>Duration:</strong> {{ movie.duration }}h</p>
+        <p><strong>Actors:</strong> {{ movie.actors }}</p>
+        <p class="rate"><i class="fas fa-star"></i><span>{{ movie.ratings[0] }}</span> /10</p>
         <button class="watch-trailer-btn">Watch Trailer</button>
       </div>
     </div>
   </div>
+  
+  <!-- Show loading message if movie data is not available -->
   <div *ngIf="!movie" class="loading-message">Loading...</div>
+
+  <!-- List of all movies -->
+  <div class="movies-list">
+    <h2>You may also like:</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let movieItem of movies">
+        <a [routerLink]="['/movie', movieItem.id]" style="text-decoration: none;">
+          <div class="card mb-3 movie-card">
+            <img src="http://localhost:8080/film-img/{{movieItem.photo}}" class="card-img-top" alt="Movie Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ movieItem.title }}</h5>
+              <p class="card-text">{{ movieItem.genre }}</p>
+              <p class="card-text">Director: {{ movieItem.director }}</p>
+              <p class="card-text">Year: {{ movieItem.year }}</p>
+              <p class="rate"><i class="fas fa-star"></i><span>{{ movieItem.ratings[0] }}</span> /10</p>
+
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
