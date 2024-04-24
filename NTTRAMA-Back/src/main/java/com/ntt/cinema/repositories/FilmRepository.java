@@ -1,5 +1,6 @@
 package com.ntt.cinema.repositories;
 
+import com.ntt.cinema.dto.InlineFilm;
 import com.ntt.cinema.models.Film;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @CrossOrigin("http://localhost:4200")
 @Repository
-@RepositoryRestResource
+@RepositoryRestResource(excerptProjection = InlineFilm.class)
 public interface FilmRepository extends JpaRepository<Film, Integer> {
     // Method to find films by title
 //    List<Film> findByTitle(String title);
