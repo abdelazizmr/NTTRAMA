@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Table</title>
+    <title>Media Table</title>
     <!-- Bootstrap CSS -->
     <link id="theme-link" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Dark theme custom styles -->
@@ -49,66 +49,93 @@
     </div>
 </nav>
 
-<!-- Main content -->
-<div class="container mt-4">
-    <h1>Room Table</h1>
+<div class="container-fluid my-4 table-responsive">
+    <h1>Media Table</h1>
+    <button type="submit" class="btn btn-primary divButton">Add Media</button>
     <table id="customer-table" class="table table-dark table-striped">
+        <!-- Table headers -->
         <thead>
         <tr>
             <th>ID</th>
             <th>Added Date</th>
-            <th>Capacity</th>
-            <th>Room Number</th>
-
+            <th>Movie</th>
+            <th>Video</th>
+            <th>Photos</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="movieRoom : ${movieRooms}">
-            <td class="room-id" th:text="${movieRoom.id}" ></td>
-            <td th:text="${movieRoom.added_date}"></td>
-            <td class="room-capacity" th:text="${movieRoom.capacity}"></td>
-            <td class="room_number" th:text="${movieRoom.room_number}"></td>
+        <!-- Table rows -->
+        <tr th:each="media : ${medias}">
+            <td class="media-id" th:text="${media.id}"></td>
+            <td th:text="${media.added_date}"></td>
+            <td class="movie-photo">
+                <img th:src="@{'/film-img/' + ${media.film.photo}}" alt="Film Photo" style="max-width: 100px;">
+            </td>
+            <td class="movie-video" th:text="${media.video}"></td>
+            <td class="media-photos">
+                <div th:each="photo : ${media.photoList}">
+                    <img th:src="@{/media-img/{filename}(filename=${photo})}" alt="Photo" style="max-width: 100px";/>
+                </div>
             <td>
                 <button class="btn btn-primary editButton">Edit</button>
             </td>
             <td>
-                <form th:action="@{'/movie-rooms/' + ${movieRoom.id}}" method="post">
+                <form th:action="@{'/medias/' + ${media.id}}" method="post">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>
-
         </tbody>
     </table>
-    <button type="submit" class="btn btn-primary divButton">Add Room</button>
 </div>
 
+
 <div class = "addDiv hide">
-    <form th:action="@{'/movie-rooms'}" method="post">
+    <form th:action="@{'/medias'}" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <input type="hidden" class="form-control" id="id" name="id">
         </div>
         <div class="form-group">
-            <label for="capacity">Capacity:</label>
-            <input type="number" class="form-control" id="capacity" name="capacity" required>
+            <label for="title">Movie Title:</label>
+            <select class="form-control" id="title" name="film" required>
+                <option th:each="film : ${films}" th:value="${film.id}" th:text="${film.title}"></option>
+            </select>
         </div>
         <div class="form-group">
-            <label for="room-number">Room Number:</label>
-            <input type="number" class="form-control" id="room-number" name="room_number" required>
+            <label for="video">Trailer:</label>
+            <input type="text" class="form-control" id="video" name="video" required>
         </div>
+        <div class="form-group">
+            <label for="photoOne">Photo 1:</label>
+            <input type="file" class="form-control-file" id="photoOne" name="photos" required>
+        </div>
+        <div class="form-group">
+            <label for="photoTwo">Photo 2:</label>
+            <input type="file" class="form-control-file" id="photoTwo" name="photos" required>
+        </div>
+        <div class="form-group">
+            <label for="photoThree">Photo 3:</label>
+            <input type="file" class="form-control-file" id="photoThree" name="photos" required>
+        </div>
+        <div class="form-group">
+            <label for="photoFour">Photo 4:</label>
+            <input type="file" class="form-control-file" id="photoFour" name="photos" required>
+        </div>
+
         <button type="submit" class="btn btn-primary confirmButton">Confirm</button>
         <button type="button" class="btn btn-danger cancelButton">Cancel</button>
     </form>
 </div>
+
 <div class="overlay hide"></div>
 
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/rooms-script.js"></script>
+<script src="/js/media-script.js"></script>
 
 </body>
 </html>

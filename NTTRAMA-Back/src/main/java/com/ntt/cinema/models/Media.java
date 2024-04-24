@@ -18,8 +18,8 @@ public class Media {
     @JoinColumn(name = "film_id")
     private Film film;
 
-    @OneToMany(mappedBy = "media", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Photo> photoList;
+    @ElementCollection
+    private List<String> photoList;
 
     public int getId() {
         return id;
@@ -53,11 +53,11 @@ public class Media {
         this.film = film;
     }
 
-    public List<Photo> getPhotoList() {
+    public List<String> getPhotoList() {
         return photoList;
     }
 
-    public void setPhotoList(List<Photo> photoList) {
+    public void setPhotoList(List<String> photoList) {
         this.photoList = photoList;
     }
 }
