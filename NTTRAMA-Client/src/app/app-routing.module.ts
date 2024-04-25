@@ -11,6 +11,7 @@ import { ArtistsComponent } from './Components/artists/artists.component';
 import { ArtistComponent } from './Components/artist/artist.component';
 import { GenresComponent } from './Components/genres/genres.component';
 import { GenreComponent } from './Components/genre/genre.component';
+import { SessionsComponent } from './Components/sessions/sessions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
     { path: 'artist/:id', component: ArtistComponent },
     { path: 'genres', component: GenresComponent },
     { path: 'genre/:id', component: GenreComponent }, // Add route for GenrePageComponent
+    { path: 'sessions', component: SessionsComponent },
 
 
 

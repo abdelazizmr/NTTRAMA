@@ -16,7 +16,7 @@
         <p><strong>Year:</strong> {{ movie.year }}</p>
         <p><strong>Duration:</strong> {{ movie.duration }}h</p>
         <p><strong>Actors:</strong> {{ movie.actors }}</p>
-        <p class="rate"><i class="fas fa-star"></i><span>{{ movie.ratings[0] }}</span> /10</p>
+        <p class="rate"><i class="fas fa-star"></i><span>{{ movie.averageRating }}</span> /10</p>
         <button class="watch-trailer-btn">Watch Trailer</button>
       </div>
     </div>
@@ -38,7 +38,7 @@
               <p class="card-text">{{ movieItem.genre }}</p>
               <p class="card-text">Director: {{ movieItem.director }}</p>
               <p class="card-text">Year: {{ movieItem.year }}</p>
-              <p class="rate"><i class="fas fa-star"></i><span>{{ movieItem.ratings[0] }}</span> /10</p>
+              <!-- <p class="rate"><i class="fas fa-star"></i><span>{{ movieItem.ratings[0] }}</span> /10</p> -->
 
             </div>
           </div>

@@ -1,0 +1,17 @@
+<div class="container">
+    <h2 class="title">Movie Sessions</h2>
+    <div class="row">
+      <div class="col-md-12" *ngFor="let session of movieSessions">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ session._embedded.film.title }}</h5>
+
+            <p class="card-text">Projection Date: {{ session.projection_date }}</p>
+            <p class="card-text">Start Time: {{ session.start_time }}</p>
+            <p class="card-text">End Time: {{ session.end_time }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

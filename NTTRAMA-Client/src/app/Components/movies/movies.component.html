@@ -11,10 +11,10 @@
           <div class="overlay">
             <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>
           </div>
-          <img src="http://localhost:8080/film-img/{{movie.photo}}" [alt]="movie.title">
+          <img [src]="'http://localhost:8080/film-img/' + movie.photo" alt="{{ movie.title }}">
           <h6>{{ movie.title }}</h6>
 
-          <p class="rate"><i class="fas fa-star"></i><span>{{ movie.ratings[0] }}</span> /10</p>
+          <!-- <p class="rate"><i class="fas fa-star"></i><span>{{ movie.ratings[0] }}</span> /10</p> -->
           <p class="year"><span>{{ movie.year }}</span></p>
         </div>
       </a>
