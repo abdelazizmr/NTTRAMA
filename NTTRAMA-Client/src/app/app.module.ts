@@ -17,7 +17,8 @@ import { ArtistComponent } from './Components/artist/artist.component';
 import { CarouselModule } from 'primeng/carousel';
 import { GenresComponent } from './Components/genres/genres.component'; // Import CarouselModule
 
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
+import { GenreComponent } from './Components/genre/genre.component'; // Import FormsModule
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
     ArtistsComponent,
     ArtistComponent,
     GenresComponent,
+    GenreComponent,
   ],
   imports: [
     BrowserModule,

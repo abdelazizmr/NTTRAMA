@@ -10,6 +10,8 @@ import { AuthGuard } from './Services/auth.guard.service';
 import { ArtistsComponent } from './Components/artists/artists.component';
 import { ArtistComponent } from './Components/artist/artist.component';
 import { GenresComponent } from './Components/genres/genres.component';
+import { GenreComponent } from './Components/genre/genre.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
   { path: 'movies', component: MoviesComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
     path: 'artists', component : ArtistsComponent },
     { path: 'artist/:id', component: ArtistComponent },
     { path: 'genres', component: GenresComponent },
+    { path: 'genre/:id', component: GenreComponent }, // Add route for GenrePageComponent
+
 
 
 ];

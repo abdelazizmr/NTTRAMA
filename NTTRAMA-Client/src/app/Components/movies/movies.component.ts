@@ -1,4 +1,3 @@
-// movies.component.ts
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,56 +8,52 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MoviesComponent implements OnInit {
   movies: any[] = [];
-  currentPage = 1; 
-  pageSize = 16; 
-  filteredMovies!: any[];
-  searchQuery: string = '';
+  paginatedMovies: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 16; 
+  totalPages: number = 0;
+  pages: number[] = [];
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.fetchMovies();
-    this.filteredMovies = [...this.movies]; // Initialize filteredMovies with all movies
-
   }
 
-  fetchMovies() {
+  fetchMovies(): void {
     this.http.get<any>('http://localhost:8080/api/films').subscribe(data => {
       this.movies = data._embedded.films;
-
+      this.totalPages = Math.ceil(this.movies.length / this.pageSize);
+      this.setPage(1);
     });
   }
-  filterMovies(searchQuery: string) {
-    // Filter movies based on the search query
-    this.filteredMovies = this.movies.filter(movie =>
-      movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      movie.year.toString().includes(searchQuery.toLowerCase())
-    );
-  }
-  
-  get paginatedMovies() {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    return this.movies.slice(startIndex, endIndex);
-  }
 
-  get pages(): number[] {
-    const pageCount = Math.ceil(this.movies.length / this.pageSize);
-    return Array(pageCount).fill(0).map((x, i) => i + 1);
-  }
-
-  goToPage(page: number) {
+  setPage(page: number): void {
     this.currentPage = page;
+    this.paginatedMovies = this.movies.slice((page - 1) * this.pageSize, page * this.pageSize);
+    this.calculatePages();
   }
 
-  nextPage() {
-    if (this.currentPage < this.pages.length) {
-      this.currentPage++;
+  calculatePages(): void {
+    this.pages = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      this.pages.push(i);
     }
   }
 
-  prevPage() {
+  prevPage(): void {
     if (this.currentPage > 1) {
-      this.currentPage--;
+      this.setPage(this.currentPage - 1);
     }
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.setPage(this.currentPage + 1);
+    }
+  }
+
+  goToPage(page: number): void {
+    this.setPage(page);
   }
 }

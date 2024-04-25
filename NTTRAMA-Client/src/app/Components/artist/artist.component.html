@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img">
-                <img [src]="artist?.photo" alt="Profile Picture"/>
+                <img src="http://localhost:8080/artist-img/{{artist.photo}}" alt="Profile Picture"/>
             </div>
         </div>
         <div class="col-md-6">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <!-- Artist details content -->
+   
     <div class="row">
         <div class="col-md-4">
             <div class="profile-work">
@@ -74,7 +74,7 @@
         <div class="col-md-4" *ngFor="let artistCard of artists">
             <a [routerLink]="['/artist', artistCard.id]" style="text-decoration: none;">
                 <div class="card mb-3">
-                    <img [src]="artistCard.photo" class="card-img-top" alt="Artist Image">
+                    <img src="http://localhost:8080/artist-img/{{artistCard.photo}}" class="card-img-top" alt="Artist Image">
                     <div class="card-body">
                         <h5 class="card-title">{{ artistCard.fullname }}</h5>
                         <p class="card-text">{{ artistCard.artistType }}</p>
