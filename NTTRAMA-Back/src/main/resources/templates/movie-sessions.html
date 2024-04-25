@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Table</title>
+    <title>Session Table</title>
     <!-- Bootstrap CSS -->
     <link id="theme-link" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Dark theme custom styles -->
@@ -51,30 +51,37 @@
 
 <!-- Main content -->
 <div class="container mt-4">
-    <h1>Room Table</h1>
+    <h1>Session Table</h1>
     <table id="customer-table" class="table table-dark table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Added Date</th>
-            <th>Capacity</th>
-            <th>Room Number</th>
-
+            <th>Projection Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Title</th>
+            <th>Photo</th>
+            <th>Room_Number</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="movieRoom : ${movieRooms}">
-            <td class="room-id" th:text="${movieRoom.id}" ></td>
-            <td th:text="${movieRoom.added_date}"></td>
-            <td class="room-capacity" th:text="${movieRoom.capacity}"></td>
-            <td class="room_number" th:text="${movieRoom.room_number}"></td>
+        <tr th:each="movieSession : ${movieSessions}">
+            <td class="movieSessions-id" th:text="${movieSession.id}" ></td>
+            <td class="movieSession-projection" th:text="${movieSession.projection_date}"></td>
+            <td class="movieSession-start" th:text="${movieSession.start_time}"></td>
+            <td class="movieSession-end" th:text="${movieSession.end_time}"></td>
+            <td class="movieSession-title" th:text="${movieSession.film.title}"></td>
+            <td class="movieSession-photo">
+                <img th:src="@{'/film-img/' + ${movieSession.film.photo}}" alt="Film Photo" style="max-width: 100px;">
+            </td>
+            <td class="movieSession-room" th:text="${movieSession.movieRoom.room_number}"></td>
             <td>
                 <button class="btn btn-primary editButton">Edit</button>
             </td>
             <td>
-                <form th:action="@{'/movie-rooms/' + ${movieRoom.id}}" method="post">
+                <form th:action="@{'/movie-sessions/' + ${movieSession.id}}" method="post">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
@@ -82,21 +89,37 @@
 
         </tbody>
     </table>
-    <button type="submit" class="btn btn-primary divButton">Add Room</button>
+    <button type="submit" class="btn btn-primary divButton">Add Session</button>
 </div>
 
 <div class = "addDiv hide">
-    <form th:action="@{'/movie-rooms'}" method="post">
+    <form th:action="@{'/movie-sessions'}" method="post">
         <div class="form-group">
             <input type="hidden" class="form-control" id="id" name="id">
         </div>
         <div class="form-group">
-            <label for="capacity">Capacity:</label>
-            <input type="number" class="form-control" id="capacity" name="capacity" required>
+            <label for="projectionDate">Projection Date:</label>
+            <input type="date" class="form-control" id="projectionDate" name="projection_date" required>
         </div>
         <div class="form-group">
-            <label for="room-number">Room Number:</label>
-            <input type="number" class="form-control" id="room-number" name="room_number" required>
+            <label for="startTime">Start Time:</label>
+            <input type="time" class="form-control" id="startTime" name="start_time" required>
+        </div>
+        <div class="form-group">
+            <label for="endTime">End Time:</label>
+            <input type="time" class="form-control" id="endTime" name="end_time" required>
+        </div>
+        <div class="form-group">
+            <label for="title">Film Title:</label>
+            <select class="form-control" id="title" name="film" required>
+                <option th:each="film : ${films}" th:value="${film.id}" th:text="${film.title}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="room">Room:</label>
+            <select class="form-control" id="room" name="movieRoom" required>
+                <option th:each="movieRoom : ${movieRooms}" th:value="${movieRoom.id}" th:text="${movieRoom.room_number}"></option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary confirmButton">Confirm</button>
         <button type="button" class="btn btn-danger cancelButton">Cancel</button>
@@ -108,7 +131,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="/js/rooms-script.js"></script>
+<script src="/js/sessions-script.js"></script>
 
 </body>
 </html>

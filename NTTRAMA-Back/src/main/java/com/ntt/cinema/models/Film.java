@@ -38,6 +38,9 @@ public class Film {
 
     private double averageRating;
 
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
+    private List<Media> mediaList;
+
     public Film() {
     }
 
@@ -144,6 +147,14 @@ public class Film {
     public double getAverageRating() {
         updateAverageRating();
         return averageRating;
+    }
+
+    public List<Media> getMediaList() {
+        return mediaList;
+    }
+
+    public void setMediaList(List<Media> mediaList) {
+        this.mediaList = mediaList;
     }
 
     public void setAverageRating(double averageRating) {
