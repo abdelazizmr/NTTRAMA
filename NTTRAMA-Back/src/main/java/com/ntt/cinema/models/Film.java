@@ -49,6 +49,14 @@ public class Film {
     @Column(name = "comment")
     private List<String> comments;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "rating",
+            joinColumns = @JoinColumn(name = "film_id")
+    )
+    @Column(name = "comment")
+    private List<String> comments;
+
     public Film() {
     }
 
@@ -167,5 +175,13 @@ public class Film {
 
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public List<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<String> comments) {
+        this.comments = comments;
     }
 }

@@ -1,7 +1,7 @@
 package com.ntt.cinema.repositories;
 
 import com.ntt.cinema.dto.InlineFilm;
-import com.ntt.cinema.models.Film;
+import com.ntt.cinema.models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
@@ -24,4 +24,10 @@ public interface FilmRepository extends JpaRepository<Film, Integer> {
 
     // Method to find films and order them by rating descending
     List<Film> findAllByOrderByRatingsDesc();
+
+    List<Film> findByTitle(String title);
+
+    List<Film> findByNationality(Nationality nationality);
+
+    List<Film> findByGenre(Genre genre);
 }

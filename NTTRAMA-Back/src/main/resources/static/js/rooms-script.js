@@ -40,19 +40,15 @@ overlay.addEventListener('click', function(){
 document.querySelectorAll('.editButton').forEach(button => {
     button.addEventListener('click', function() {
         const row = this.closest('tr'); // Get the closest row to the clicked button
-        const customerId = row.querySelector('.customer-id').innerText;
-        const customerEmail = row.querySelector('.customer-email').innerText;
-        const customerFirstname = row.querySelector('.customer-firstname').innerText;
-        const customerLastname = row.querySelector('.customer-lastname').innerText;
+        const roomId = row.querySelector('.room-id').innerText;
+        const roomCapacity = row.querySelector('.room-capacity').innerText;
+        const roomNumber = row.querySelector('.room_number').innerText;
 
-        document.getElementById('id').value = customerId;
-        document.getElementById('firstname').value = customerFirstname;
-        document.getElementById('lastname').value = customerLastname;
-        document.getElementById('email').value = customerEmail;
-        document.getElementById('password').required = false;
+        document.getElementById('id').value = roomId;
+        document.getElementById('capacity').value = roomCapacity;
+        document.getElementById('room-number').value = roomNumber;
+
         document.getElementById('id').disabled = false;
-
-        document.getElementById('passLabel').classList.add('hide');
 
         document.querySelector('.addDiv').classList.remove('hide');
         document.querySelector('.overlay').classList.remove('hide');
