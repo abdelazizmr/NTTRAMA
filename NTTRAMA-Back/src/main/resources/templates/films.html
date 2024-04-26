@@ -13,7 +13,7 @@
 <body class="dark-mode">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark dark-mode">
-    <a class="navbar-brand" href="index">NTTRAMA</a>
+    <a class="navbar-brand" href="index">NTTRAMA - Film Table</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,17 +42,30 @@
         <!-- Dark Mode Toggle Button -->
         <button id="theme-toggle-btn" class="btn btn-primary">Switch Mode</button>
         <!-- Search form -->
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2 dark-mode" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" th:action="@{'/search-film'}" method="get">
+            <input class="form-control mr-sm-2 dark-mode" name="title" type="search" placeholder="Movie title here ..." aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
 
 <div class="container-fluid my-4 table-responsive">
-    <h1>Film Table</h1>
-    <button type="submit" class="btn btn-primary divButton">Add Film</button>
-    <table id="customer-table" class="table table-dark table-striped">
+    <div class="filter-bar">
+        <button type="submit" class="btn btn-primary divButton">Add Film</button>
+        <form class="form-group" id="searchByGenre" th:action="@{'/search-genre'}">
+            <select class="form-control" id="genreSearch" name="genre" >
+                <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.genre_name}"></option>
+            </select>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <form class="form-group" id="searchByNationality" th:action="@{'/search-nationality'}">
+            <select class="form-control" id="nationalitySearch" name="nationality" >
+                <option th:each="nationality : ${nationalities}" th:value="${nationality.id}" th:text="${nationality.country_name}"></option>
+            </select>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>    <table id="customer-table" class="table table-dark table-striped">
         <!-- Table headers -->
         <thead>
         <tr>
@@ -82,7 +95,7 @@
             <td class="film-director" th:text="${film.director.fullname}"></td>
             <td class="film-director" th:text="${film.averageRating}"></td>
             <td class="film-photo">
-                <img th:if="${film.photo != null}" th:src="@{'/film-img/' + ${film.photo}}" alt="Film Photo" style="max-width: 100px;">
+                <img th:if="${film.photo != null}" th:src="@{'/film-img/' + ${film.photo}}" alt="Film Photo" style="max-width: 80px;">
             </td>            <td>
                 <form th:action="@{'/films/' + ${film.id}}" method="post">
                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -1,9 +1,6 @@
 package com.ntt.cinema.controllers;
 
-import com.ntt.cinema.models.Artist;
-import com.ntt.cinema.models.Film;
-import com.ntt.cinema.models.Genre;
-import com.ntt.cinema.models.Nationality;
+import com.ntt.cinema.models.*;
 import com.ntt.cinema.services.ArtistService;
 import com.ntt.cinema.services.FilmService;
 import com.ntt.cinema.services.GenreService;
@@ -49,15 +46,6 @@ public class FilmController {
         model.addAttribute("nationalities", nationalities);
         model.addAttribute("artists", artists);
         model.addAttribute("genres", genres);
-        System.out.println("************** films *************");
-//        for (Film film : films) {
-//            System.out.println("Title: " + film.getTitle());
-//            System.out.println("Year: " + film.getYear());
-//            System.out.println("Genre: " + film.getGenre().getGenre_name());
-//            System.out.println("Nationality: " + film.getNationality().getCountry_name());
-//            System.out.println("----------------------------------");
-//        }
-//        System.out.println("******************************");
         return "films";
     }
 
@@ -82,6 +70,36 @@ public class FilmController {
         filmService.deleteFilmById(id);
         return "redirect:/films";
     }
+
+    @GetMapping("/search-film")
+    public String searchFilms(@RequestParam String title, Model model) {
+        List<Film> films = filmService.searchFilmsByTitle(title);
+        model.addAttribute("films", films);
+        return "films";
+    }
+
+    @GetMapping("/search-nationality")
+    public String searchFilmsByNationality(@RequestParam Nationality nationality, Genre genre, Model model) {
+        List<Film> films = filmService.searchFilmsByNationality(nationality);
+        List<Nationality> nationalities = nationalityService.getAllNationalities();
+        List<Genre> genres = genreService.getAllGenres();
+        model.addAttribute("films", films);
+        model.addAttribute("nationalities", nationalities);
+        model.addAttribute("genres", genres);
+        return "films";
+    }
+
+    @GetMapping("/search-genre")
+    public String searchFilmsByGenre(@RequestParam Genre genre, Nationality nationality, Model model) {
+        List<Film> films = filmService.searchFilmsByGenre(genre);
+        List<Nationality> nationalities = nationalityService.getAllNationalities();
+        List<Genre> genres = genreService.getAllGenres();
+        model.addAttribute("films", films);
+        model.addAttribute("nationalities", nationalities);
+        model.addAttribute("genres", genres);
+        return "films";
+    }
+
 }
 
 

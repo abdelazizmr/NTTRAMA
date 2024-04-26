@@ -34,13 +34,17 @@ overlay.addEventListener('click', function(){
 // Function to handle click event on Edit button
 document.querySelectorAll('.editButton').forEach(button => {
     button.addEventListener('click', function() {
-        const row = this.closest('tr'); // Get the closest row to the clicked button
-        const customerId = row.querySelector('.customer-id').innerText;
-        const customerEmail = row.querySelector('.customer-email').innerText;
-        const customerFirstname = row.querySelector('.customer-firstname').innerText;
-        const customerLastname = row.querySelector('.customer-lastname').innerText;
+        const row = this.closest('tr');
+        const sessionId = row.querySelector('.movieSessions-id').innerText;
+        const projectionDate = row.querySelector('.movieSession-projection').innerText;
+        const sessionStart = row.querySelector('.movieSession-start').innerText;
+        const sessionEnd = row.querySelector('.movieSession-end').innerText;
 
-        document.getElementById('id').value = customerId;
+        document.getElementById('id').value = sessionId;
+        document.getElementById('projectionDate').value = projectionDate;
+        document.getElementById('startTime').value = sessionStart;
+        document.getElementById('endTime').value = sessionEnd;
+
         document.getElementById('id').disabled = false;
 
         document.querySelector('.addDiv').classList.remove('hide');

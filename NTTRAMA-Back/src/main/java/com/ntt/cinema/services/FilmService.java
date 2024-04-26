@@ -1,6 +1,6 @@
 package com.ntt.cinema.services;
 
-import com.ntt.cinema.models.Film;
+import com.ntt.cinema.models.*;
 import com.ntt.cinema.repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +31,17 @@ public class FilmService {
 
     public void deleteFilmById(int id) {
         filmRepository.deleteById(id);
+    }
+
+    public List<Film> searchFilmsByTitle(String title) {
+        return filmRepository.findByTitle(title);
+    }
+
+    public List<Film> searchFilmsByNationality(Nationality nationality) {
+        return filmRepository.findByNationality(nationality);
+    }
+
+    public List<Film> searchFilmsByGenre(Genre genre) {
+        return filmRepository.findByGenre(genre);
     }
 }
