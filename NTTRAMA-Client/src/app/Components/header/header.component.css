@@ -28,9 +28,7 @@
     color: #fff; /* White text */
     border: none;
   }
-  .form-control:hover {
-    border-color: #ff8c00; /* Orange border on hover */
-  }
+
 
   .btn-orange:hover {
     background-color: #333; 

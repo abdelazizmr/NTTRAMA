@@ -4,6 +4,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
 
 <div class="body">
+    
+
+    <input class="form-control mr-sm-2 bg-dark" type="search" placeholder="Search" aria-label="Search"
+       [(ngModel)]="searchQuery" (input)="onSearchChange()">
+    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+ 
   <div class="row">
     <div class="col-md-3" *ngFor="let movie of paginatedMovies">
       <a class="cardlink" [routerLink]="['/movie', movie.id]">
@@ -11,10 +19,10 @@
           <div class="overlay">
             <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>
           </div>
-          <img [src]="'http://localhost:8080/film-img/' + movie.photo" alt="{{ movie.title }}">
+          <img [src]="'http://localhost:8080/film-img/' + movie.photo" alt="{{ movie.photo }}">
           <h6>{{ movie.title }}</h6>
 
-          <!-- <p class="rate"><i class="fas fa-star"></i><span>{{ movie.ratings[0] }}</span> /10</p> -->
+          <p class="rate"><i class="fas fa-star"></i><span>{{ movie.averageRating }}</span> /10</p>
           <p class="year"><span>{{ movie.year }}</span></p>
         </div>
       </a>

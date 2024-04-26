@@ -15,8 +15,14 @@
         <p><strong>Director:</strong> {{ movie.director }}</p>
         <p><strong>Year:</strong> {{ movie.year }}</p>
         <p><strong>Duration:</strong> {{ movie.duration }}h</p>
-        <p><strong>Actors:</strong> {{ movie.actors }}</p>
-        <p class="rate"><i class="fas fa-star"></i><span>{{ movie.averageRating }}</span> /10</p>
+        <p><strong>Actors:</strong></p>
+          <ul>
+          <li *ngFor="let actor of movie.actors">
+            {{ actor.firstName }} {{ actor.lastName }}
+          </li>
+        </ul>
+        
+            <p class="rate"><i class="fas fa-star"></i><span>{{ movie.averageRating }}</span> /5</p>
         <button class="watch-trailer-btn">Watch Trailer</button>
       </div>
     </div>

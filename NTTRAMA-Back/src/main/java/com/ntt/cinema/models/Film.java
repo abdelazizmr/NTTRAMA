@@ -40,6 +40,14 @@ public class Film {
 
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL)
     private List<Media> mediaList;
+    
+    @ElementCollection
+    @CollectionTable(
+            name = "rating",
+            joinColumns = @JoinColumn(name = "film_id")
+    )
+    @Column(name = "comment")
+    private List<String> comments;
 
     public Film() {
     }

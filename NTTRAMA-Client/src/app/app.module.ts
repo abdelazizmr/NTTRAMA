@@ -21,7 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { GenreComponent } from './Components/genre/genre.component';
 import { SessionsComponent } from './Components/sessions/sessions.component'; // Import FormsModule
 
+import { provideHttpClient, withFetch } from "@angular/common/http";
 
+providers : [provideHttpClient(withFetch())]
 @NgModule({
   declarations: [
     AppComponent,

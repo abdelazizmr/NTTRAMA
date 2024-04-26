@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output,ChangeDetectorRef  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-movies',
@@ -14,12 +16,25 @@ export class MoviesComponent implements OnInit {
   totalPages: number = 0;
   pages: number[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private cdr: ChangeDetectorRef) { }
+  searchQuery!: string ;
+  // @Output() searchQueryChange: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.fetchMovies();
+    this.cdr.detectChanges();
   }
-
+  onSearchChange(): void {
+    // Filter movies based on the search query
+    this.paginatedMovies = this.movies.filter(movie =>
+      movie.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+    console.log(this.paginatedMovies )
+  
+    // Reset pagination to the first page
+    this.setPage(1);
+  }
+  
   fetchMovies(): void {
     this.http.get<any>('http://localhost:8080/api/films').subscribe(data => {
       this.movies = data._embedded.films;
