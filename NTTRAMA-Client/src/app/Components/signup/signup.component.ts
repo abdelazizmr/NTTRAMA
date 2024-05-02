@@ -13,6 +13,7 @@ export class SignupComponent {
   password: string = '';
   newsletterSubscription: boolean = false;
   errorMessage: string = '';
+  baseUrl = "http://localhost:8080/api/register"
 
   constructor(private http: HttpClient) { }
 
@@ -22,10 +23,12 @@ export class SignupComponent {
       lastName: this.lastName,
       email: this.email,
       password: this.password,
-      newsletterSubscription: this.newsletterSubscription
+      // newsletterSubscription: this.newsletterSubscription
     };
 
-    this.http.post<any>('http://localhost:8080/api/user/register', userData)
+    console.log("user : ",userData)
+
+    this.http.post<any>(this.baseUrl, userData)
       .subscribe(
         response => {
           // Handle successful sign-up
